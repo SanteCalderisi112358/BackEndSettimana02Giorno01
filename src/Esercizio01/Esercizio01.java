@@ -29,8 +29,8 @@ public class Esercizio01 {
 
 	public static void aggiungiNumeriInput(int[] array) throws NumeroInputException, PosizioneInputException {
 
-		int numeroInput = 0;
-		int numeroInputSostitutivo = 0;
+		int numeroInput;
+		int numeroInputSostitutivo;
 		try (Scanner input = new Scanner(System.in)) {
 			do {
 				System.out.println("Inserire un numero per aggiornare l'array:");
@@ -55,7 +55,7 @@ public class Esercizio01 {
 					throw new NumeroInputException("Hai inserito un numero non compreso tra 0 e 10");
 				}
 
-			} while (numeroInputSostitutivo != 0);
+			} while (numeroInput != 0);
 
 			input.close();
 		} catch (NumberFormatException e) {
