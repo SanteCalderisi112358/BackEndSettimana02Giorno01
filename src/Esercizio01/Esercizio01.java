@@ -30,12 +30,15 @@ public class Esercizio01 {
 	public static void aggiungiNumeriInput(int[] array) throws NumeroInputException, PosizioneInputException {
 
 		int numeroInput;
-		int numeroInputSostitutivo;
+
 		try (Scanner input = new Scanner(System.in)) {
 			do {
 				System.out.println("Inserire un numero per aggiornare l'array:");
 				numeroInput = Integer.parseInt(input.nextLine());
-				numeroInputSostitutivo = numeroInput;
+				if (numeroInput == 0) {
+
+					break;
+				}
 				if (numeroInput >= 0 && numeroInput < 11) {
 					try {
 						System.out.printf("Inserire la posizione in cui vuoi inserire il numero %d:", numeroInput);
@@ -44,7 +47,7 @@ public class Esercizio01 {
 						if (posizione < 0 || posizione >= array.length) {
 							throw new PosizioneInputException("Posizione non valida");
 						} else {
-							array[posizione] = numeroInputSostitutivo;
+							array[posizione] = numeroInput;
 						}
 					}
 
@@ -53,6 +56,7 @@ public class Esercizio01 {
 					}
 				} else {
 					throw new NumeroInputException("Hai inserito un numero non compreso tra 0 e 10");
+
 				}
 
 			} while (numeroInput != 0);
@@ -62,7 +66,7 @@ public class Esercizio01 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		System.out.println("L'array aggiornato è:\n" + Arrays.toString(array));
+		System.out.println("Arrivederci");
 	}
 }
